@@ -1,8 +1,6 @@
 set(Python_FIND_VIRTUALENV ONLY)
 set(Python_USE_STATIC_LIBS FALSE)
 find_package(Python 3 REQUIRED COMPONENTS Interpreter Development)
-target_link_libraries(callpy PUBLIC Python::Python)
-
 add_library(callpy SHARED callpy_mod.f90 ${CMAKE_CURRENT_BINARY_DIR}/plugin.c)
 target_link_libraries(callpy PUBLIC Python::Python)
 
