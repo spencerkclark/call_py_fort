@@ -4,12 +4,7 @@ find_package(Python 3 REQUIRED COMPONENTS Interpreter Development)
 target_link_libraries(callpy PUBLIC Python::Python)
 
 add_library(callpy SHARED callpy_mod.f90 ${CMAKE_CURRENT_BINARY_DIR}/plugin.c)
-target_link_libraries(callpy ${PYTHON_LIBRARIES})
-target_include_directories(callpy PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-    $<INSTALL_INTERFACE:include>
-    ${PYTHON_INCLUDE_DIRS}
-    )
+target_link_libraries(callpy PUBLIC Python::Python)
 
 install(TARGETS callpy
     EXPORT callpy
