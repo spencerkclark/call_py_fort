@@ -1,7 +1,9 @@
+PREFIX ?= /usr/local
+
 CMAKE=cmake
 all: | build
 	mkdir -p build
-	cd build && $(CMAKE) ..
+	cd build && $(CMAKE) -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
 	${MAKE} -C build
 
 install: all
